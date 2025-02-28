@@ -58,10 +58,10 @@
                 </div>
                 <div class="card-body row justify-content-center">
                     <div class="col-md-2 m-1">
-                        <a href="http://www.google.com" >
-                        <button type="button" class="btn btn-primary btn-block"><i class="fa fa-bell">
-                        </i>
-                            google</button>
+                        <a href="http://www.google.com">
+                            <button type="button" class="btn btn-primary btn-block"><i class="fa fa-bell">
+                                </i>
+                                google</button>
                         </a>
                     </div>
                     <div class="col-md-2 m-1">
