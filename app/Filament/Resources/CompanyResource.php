@@ -27,11 +27,9 @@ class CompanyResource extends Resource
                     ->required()
                     ->maxLength(255),
                 Forms\Components\FileUpload::make('image')
-                    ->image()
+                      ->required(),
+                Forms\Components\TagsInput::make('contact')
                     ->required(),
-                Forms\Components\TextInput::make('contact')
-                    ->required()
-                    ->maxLength(255),
                 Forms\Components\TextInput::make('address')
                     ->required()
                     ->maxLength(255),
