@@ -11,8 +11,9 @@ class DashboardController extends Controller
 
     public function home()
     {
-        $link = local::all();
+        $intranetdatas = local::where('type','intranet')->get();
+        $internetdatas=local::where('type','internet')->get();
         $company = company::all()->first();
-        return view('dashboard', compact('link', 'company'));
+        return view('dashboard', compact('intranetdatas','internetdatas', 'company'));
     }
 }

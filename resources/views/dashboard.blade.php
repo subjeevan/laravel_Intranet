@@ -25,30 +25,12 @@
                     <h3 class="card-title">Intranet Sites</h3>
                 </div>
                 <div class="card-body row justify-content-center">
-                    <div class="col-md-2 m-1">
-                        <button type="button" class="btn btn-primary btn-block"><i class="fa fa-bell"></i>
-                            .btn-block</button>
+                    @foreach ($intranetdatas as $intranetdata)
+                    <div class="col-md-2 m-1"><a href="{{$intranetdata->url}}">
+                        <button type="button" class="btn btn-primary btn-block" >{{$intranetdata->name}}</button></a>
                     </div>
-                    <div class="col-md-2 m-1">
-                        <button type="button" class="btn btn-primary btn-block"><i class="fa fa-bell"></i>
-                            .btn-block</button>
-                    </div>
-                    <div class="col-md-2 m-1">
-                        <button type="button" class="btn btn-primary btn-block"><i class="fa fa-bell"></i>
-                            .btn-block</button>
-                    </div>
-                    <div class="col-md-2 m-1">
-                        <button type="button" class="btn btn-primary btn-block"><i class="fa fa-bell"></i>
-                            .btn-block</button>
-                    </div>
-                    <div class="col-md-2 m-1">
-                        <button type="button" class="btn btn-primary btn-block"><i class="fa fa-bell"></i>
-                            .btn-block</button>
-                    </div>
-                    <div class="col-md-2 m-1">
-                        <button type="button" class="btn btn-primary btn-block"><i class="fa fa-bell"></i>
-                            .btn-block</button>
-                    </div>
+                    @endforeach
+
                 </div>
 
             </div>
@@ -57,33 +39,11 @@
                     <h3 class="card-title">Internet Sites</h3>
                 </div>
                 <div class="card-body row justify-content-center">
-                    <div class="col-md-2 m-1">
-                        <a href="http://www.google.com">
-                            <button type="button" class="btn btn-primary btn-block"><i class="fa fa-bell">
-                                </i>
-                                google</button>
-                        </a>
-                    </div>
-                    <div class="col-md-2 m-1">
-                        <button type="button" class="btn btn-primary btn-block"><i class="fa fa-bell"></i>
-                            .btn-block</button>
-                    </div>
-                    <div class="col-md-2 m-1">
-                        <button type="button" class="btn btn-primary btn-block"><i class="fa fa-bell"></i>
-                            .btn-block</button>
-                    </div>
-                    <div class="col-md-2 m-1">
-                        <button type="button" class="btn btn-primary btn-block"><i class="fa fa-bell"></i>
-                            .btn-block</button>
-                    </div>
-                    <div class="col-md-2 m-1">
-                        <button type="button" class="btn btn-primary btn-block"><i class="fa fa-bell"></i>
-                            .btn-block</button>
-                    </div>
-                    <div class="col-md-2 m-1">
-                        <button type="button" class="btn btn-primary btn-block"><i class="fa fa-bell"></i>
-                            .btn-block</button>
-                    </div>
+                        @foreach ($internetdatas as $internetdata)
+                        <div class="col-md-2 m-1"><a href="{{$internetdata->url}}">
+                            <button type="button" class="btn btn-primary btn-block" >{{$internetdata->name}}</button></a>
+                        </div>
+                        @endforeach
                 </div>
 
             </div>
