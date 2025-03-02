@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('extensions', function (Blueprint $table) {
             $table->id();
+            $table->string('room');
+            $table->string('department');
             $table->integer('extension');
-            $table->string('name');
-            $table->string('description');
+            $table->string('description')->nullable;
             $table->timestamps();
         });
     }

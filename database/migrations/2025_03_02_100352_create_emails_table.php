@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('locals', function (Blueprint $table) {
+        Schema::create('emails', function (Blueprint $table) {
             $table->id();
-            $table->integer('order');
-            $table->string('name');
-            $table->string('url');
-            $table->string('type');
+            $table->string('username');
+            $table->string('department');
+            $table->string('email');
+            $table->string('location');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('locals');
+        Schema::dropIfExists('emails');
     }
 };

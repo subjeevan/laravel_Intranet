@@ -9,15 +9,15 @@
     <!-- Sidebar -->
     <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        {{-- <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
                 <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
                 <a href="#" class="d-block"> {{ $company->name ?? '' }}</a>
             </div>
-        </div>
-
+        </div> --}}
+<br>
         <!-- SidebarSearch Form -->
         <div class="form-inline">
             <div class="input-group" data-widget="sidebar-search">
@@ -38,30 +38,29 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item menu-open">
-                    <a href="#" class="nav-link active">
+                    <a href="{{route('homepage')}}" class="nav-link {{Route::is('homepage') ? 'active' : ''}}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
-                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{route('dashboard')}}" class="nav-link {{Route::is('dashboard') ? 'active' : ''}}">
+                        <i class="nav-icon fas fa-hands-helping"></i>
+                        <p>
+                            Documentation & Guides
+                        </p>
+                    </a>
+                </li>
+                {{-- <li class="nav-item">
                     <a href="/docs/3.1//implementations.html" class="nav-link">
                         <i class="nav-icon fas fa-bookmark"></i>
                         <p>
                             Implementations
                         </p>
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a href="/docs/3.1//how-to-contribute.html" class="nav-link active">
-                        <i class="nav-icon fas fa-hands-helping"></i>
-                        <p>
-                            Contributing Guide
-                        </p>
-                    </a>
-                </li>
+                </li> --}}
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
