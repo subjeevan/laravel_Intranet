@@ -21,37 +21,63 @@
         <!-- Main content -->
         <section class="content">
             <div class="row">
-
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="row">
                             <div class="col-md-2 m-1"><a href="">
-                                <div class="row">
+                                    <div class="row">
 
-                                    <div> How to download</div>
-                                    <button type="button" class="btn btn-primary btn-block">est</button>
+                                        <div> How to download</div>
+                                        <button type="button" class="btn btn-primary btn-block">est</button>
                                 </a>
                             </div>
                         </div>
                         <div class="col-md-2 m-1"><a href="">
-                                    <button type="button" class="btn btn-primary btn-block">est</button></a>
-                            </div>
-                            <div class="col-md-2 m-1"><a href="">
-                                    <button type="button" class="btn btn-primary btn-block">est</button></a>
-                            </div>
-                            <div class="col-md-2 m-1"><a href="">
-                                    <button type="button" class="btn btn-primary btn-block">est</button></a>
-                            </div>
+                                <button type="button" class="btn btn-primary btn-block">est</button></a>
+                        </div>
+                        <div class="col-md-2 m-1"><a href="">
+                                <button type="button" class="btn btn-primary btn-block">est</button></a>
+                        </div>
+                        <div class="col-md-2 m-1"><a href="">
+                                <button type="button" class="btn btn-primary btn-block">est</button></a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <div class="card">
+            </div>
 
-                        hi
-                    </div>
+            <div class="col-lg-6">
+                <div class="card">
+
+                    hi
                 </div>
             </div>
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table m-0">
+                                <thead>
+                                    <tr>
+                                        <th>Hospital</th>
+                                        <th>Link</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Call of Duty IV</td>
+                                        <td><button class="btn btn-sm btn-primary"><a
+                                                    href="pages/examples/invoice.html">OR9842</a></button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+    </div>
+    </section>
+    </div>
 
 </x-layout>
 <script>
