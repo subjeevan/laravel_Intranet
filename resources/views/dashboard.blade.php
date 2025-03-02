@@ -69,7 +69,7 @@
                                             aria-describedby="extension_info">
                                             <thead>
                                                 <tr>
-                                                        <th class="sorting" tabindex="0" aria-controls="extension"
+                                                    <th class="sorting" tabindex="0" aria-controls="extension"
                                                         rowspan="1" colspan="1"
                                                         aria-label="Platform(s): activate to sort column ascending">
                                                         Department</th>
@@ -87,13 +87,13 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                             @foreach ($extensions as $extension)
-                                                <tr class="odd">
-                                                    <td>{{$extension->department}}</td>
-                                                    <td>{{$extension->extension}}</td>
-                                                    <td>{{$extension->description}}</td>
-                                                </tr>
-@endforeach
+                                                @foreach ($extensions as $extension)
+                                                    <tr class="odd">
+                                                        <td>{{ $extension->department }}</td>
+                                                        <td>{{ $extension->extension }}</td>
+                                                        <td>{{ $extension->description }}</td>
+                                                    </tr>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>
@@ -125,17 +125,17 @@
                                             aria-describedby="email_info">
                                             <thead>
                                                 <tr>
-                                                        <th class="sorting" tabindex="0" aria-controls="email"
+                                                    <th class="sorting" tabindex="0" aria-controls="email"
                                                         rowspan="1" colspan="1"
                                                         aria-label="Browser: activate to sort column ascending">
                                                         Department
                                                     </th>
-                                                        <th class="sorting" tabindex="0" aria-controls="email"
+                                                    <th class="sorting" tabindex="0" aria-controls="email"
                                                         rowspan="1" colspan="1"
                                                         aria-label="Platform(s): activate to sort column ascending">
                                                         Email Address</th>
 
-                                                        <th class="sorting" tabindex="0" aria-controls="email"
+                                                    <th class="sorting" tabindex="0" aria-controls="email"
                                                         rowspan="1" colspan="1"
                                                         aria-label="Platform(s): activate to sort column ascending">
                                                         Location</th>
@@ -143,12 +143,12 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-@foreach ($emails as $email)
-                                                <tr class="odd">
-                                                   <td>{{$email->department}}</td>
-                                                    <td>{{$email->email}}</td>
-                                                    <td>{{$email->location}}</td>
-                                                </tr>
+                                                @foreach ($emails as $email)
+                                                    <tr class="odd">
+                                                        <td>{{ $email->department }}</td>
+                                                        <td>{{ $email->email }}</td>
+                                                        <td>{{ $email->location }}</td>
+                                                    </tr>
                                                 @endforeach
                                             </tbody>
                                         </table>
@@ -180,13 +180,15 @@
             "responsive": true,
             "lengthChange": false,
             "autoWidth": false,
-            "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+            "buttons": ["excel", "pdf", "print", "colvis"]
         };
 
         // Initialize Extension Table
-        $("#extension").DataTable(dataTableOptions).buttons().container().appendTo('#extension_wrapper .col-md-6:eq(0)');
+        $("#extension").DataTable(dataTableOptions).buttons().container().appendTo(
+            '#extension_wrapper .col-md-6:eq(0)');
 
         // Initialize Email Table
-        $("#email").DataTable(dataTableOptions).buttons().container().appendTo('#email_wrapper .col-md-6:eq(0)');
+        $("#email").DataTable(dataTableOptions).buttons().container().appendTo(
+        '#email_wrapper .col-md-6:eq(0)');
     });
 </script>

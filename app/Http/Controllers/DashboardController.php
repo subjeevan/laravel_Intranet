@@ -21,4 +21,8 @@ class DashboardController extends Controller
 
         return view('dashboard', compact('intranetdatas', 'internetdatas', 'company','emails','extensions'));
     }
+
+    public function guides(){
+        return view('guides');
+    }
 }
