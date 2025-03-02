@@ -25,12 +25,15 @@
                     <h3 class="card-title">Intranet Sites</h3>
                 </div>
                 <div class="card-body row justify-content-center">
-                    @foreach ($intranetdatas as $intranetdata)
-                    <div class="col-md-2 m-1"><a href="{{$intranetdata->url}}">
-                        <button type="button" class="btn btn-primary btn-block" >{{$intranetdata->name}}</button></a>
-                    </div>
-                    @endforeach
+                    @if ($intranetdatas)
+                        @foreach ($intranetdatas as $intranetdata)
+                            <div class="col-md-2 m-1"><a href="{{ $intranetdata->url }}">
+                                    <button type="button"
+                                        class="btn btn-primary btn-block">{{ $intranetdata->name }}</button></a>
+                            </div>
+                        @endforeach
 
+                    @endif
                 </div>
 
             </div>
@@ -39,11 +42,15 @@
                     <h3 class="card-title">Internet Sites</h3>
                 </div>
                 <div class="card-body row justify-content-center">
+                    @if ($internetdatas)
                         @foreach ($internetdatas as $internetdata)
-                        <div class="col-md-2 m-1"><a href="{{$internetdata->url}}">
-                            <button type="button" class="btn btn-primary btn-block" >{{$internetdata->name}}</button></a>
-                        </div>
+                            <div class="col-md-2 m-1"><a href="{{ $internetdata->url }}">
+                                    <button type="button"
+                                        class="btn btn-primary btn-block">{{ $internetdata->name }}</button></a>
+                            </div>
                         @endforeach
+
+                    @endif
                 </div>
 
             </div>
