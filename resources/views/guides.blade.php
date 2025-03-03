@@ -21,43 +21,57 @@
         <!-- Main content -->
         <section class="content">
             <div class="row">
-                {{-- <div class="col-lg-6">
+                {{-- <div class="col-lg-3">
                     <div class="card">
 
                     </div>
                 </div> --}}
-                <div class="col-lg-6">
+                <div class="col-lg-3">
                     <div class="card">
                         <div class="card-body p-0">
                             <div class="table-responsive">
                                 <table class="table m-0">
                                     <thead>
                                         <tr>
-                                            <th>Software Guides</th>
+                                            <th>Software Video Guides</th>
                                             <th>Link</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($svideos as $svideo)
+                                            <tr>
+                                                <td>{{ $svideo->name }}</td>
+                                                <td><a href="{{ ('storage/' . $svideo->link) }}">
+                                                        <button class="btn btn-sm btn-primary">Download</button>
+                                                    </a></td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>                <div class="col-lg-3">
+                    <div class="card">
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table m-0">
+                                    <thead>
                                         <tr>
-                                            <td>How to Register New patient</td>
-                                            <td><button class="btn btn-sm btn-primary"><a
-                                                        href="pages/examples/invoice.html">OR9842</a></button></td>
+                                            <th>Hardware Video Guides</th>
+                                            <th>Link</th>
                                         </tr>
-                                        <tr>
-                                            <td>How to Bill New patient</td>
-                                            <td><button class="btn btn-sm btn-primary"><a How to Register New patient
-                                                        href="pages/examples/invoice.html">OR9842</a></button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>How to refund Registration and Bill</td>
-                                            <td><button class="btn btn-sm btn-primary"><a
-                                                        href="pages/examples/invoice.html">OR9842</a></button></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Call of Duty IV</td>
-                                            <td><button class="btn btn-sm btn-primary"><a
-                                                        href="pages/examples/invoice.html">OR9842</a></button></td>
-                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($hvideos as $hvideo)
+                                            <tr>
+                                                <td>{{ $hvideo->name }}</td>
+                                                <td><a href="{{ ('storage/' . $hvideo->link) }}">
+                                                        <button class="btn btn-sm btn-primary">Download</button>
+                                                    </a></td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -65,38 +79,53 @@
                     </div>
                     <!-- /.table-responsive -->
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-3">
                     <div class="card">
                         <div class="card-body p-0">
                             <div class="table-responsive">
                                 <table class="table m-0">
                                     <thead>
                                         <tr>
-                                            <th>Download Files</th>
+                                            <th>Midas Software User Manuals</th>
                                             <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @foreach ($files as $file)
                                         <tr>
-                                            <td>How to Register New patient</td>
-                                            <td><button class="btn btn-sm btn-primary"><a
-                                                        href="pages/examples/invoice.html">OR9842</a></button></td>
+                                            <td>{{ $file->name }}</td>
+                                            <td><a href="{{ ('storage/' . $file->link) }}">
+                                                    <button class="btn btn-sm btn-primary">Download</button>
+                                                </a></td>
                                         </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+                <div class="col-lg-3">
+                    <div class="card">
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table m-0">
+                                    <thead>
                                         <tr>
-                                            <td>How to Bill New patient</td>
-                                            <td><button class="btn btn-sm btn-primary"><a How to Register New patient
-                                                        href="pages/examples/invoice.html">OR9842</a></button></td>
+                                            <th>Important Files</th>
+                                            <th></th>
                                         </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($docs as $doc)
                                         <tr>
-                                            <td>How to refund Registration and Bill</td>
-                                            <td><button class="btn btn-sm btn-primary"><a
-                                                        href="pages/examples/invoice.html">OR9842</a></button></td>
+                                            <td>{{ $doc->name }}</td>
+                                            <td><a href="{{ ('storage/' . $doc->link) }}">
+                                                    <button class="btn btn-sm btn-primary">Download</button>
+                                                </a></td>
                                         </tr>
-                                        <tr>
-                                            <td>Call of Duty IV</td>
-                                            <td><button class="btn btn-sm btn-primary"><a
-                                                        href="pages/examples/invoice.html">OR9842</a></button></td>
-                                        </tr>
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>

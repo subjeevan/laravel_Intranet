@@ -23,14 +23,23 @@ class DownloadResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\Select::make('type')
+                    ->label('Download Type')
+                    ->options([
+                        'hvideo' => 'Hardware Video Manual',  // Key => Value pair
+                        'svideo' => 'Software Video Manual',  // Key => Value pair
+                        'file' => 'Software User Manual',
+                        'doc' => 'Office Documents',
+                    ])
+                    ->required(),
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\FileUpload::make('link')
-                    ->required(),
-                Forms\Components\TextInput::make('type')
-                    ->required()
-                    ->maxLength(255),
+                    ->directory('files')
+                    ->maxSize(1000000),
+
+
             ]);
     }
 

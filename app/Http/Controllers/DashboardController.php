@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\company;
+use App\Models\Download;
 use App\Models\local;
 use App\Models\email;
 use App\Models\extensions;
@@ -24,6 +25,14 @@ class DashboardController extends Controller
 
     public function guides()
     {
-        return view('guides');
+        $hvideos = Download::where('type','hvideo')->get();
+        $svideos = Download::where('type','svideo')->get();
+        $files = Download::where('type','file')->get();
+        $docs = Download::where('type','doc')->get();
+
+        return view('guides', compact('files','svideos','hvideos','docs'));
+    }
+    public function changepwd(){
+        return view('changepassword');
     }
 }
