@@ -17,7 +17,7 @@
                 <a href="#" class="d-block"> {{ $company->name ?? '' }}</a>
             </div>
         </div> --}}
-<br>
+        <br>
         <!-- SidebarSearch Form -->
         <div class="form-inline">
             <div class="input-group" data-widget="sidebar-search">
@@ -38,7 +38,7 @@
                 <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
                 <li class="nav-item menu-open">
-                    <a href="{{route('dashboard')}}" class="nav-link {{Route::is('dashboard') ? 'active' : ''}}">
+                    <a href="{{ route('dashboard') }}" class="nav-link {{ Route::is('dashboard') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
@@ -46,10 +46,10 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{route('guides')}}" class="nav-link {{Route::is('guides') ? 'active' : ''}}">
+                    <a href="{{ route('guides') }}" class="nav-link {{ Route::is('guides') ? 'active' : '' }}">
                         <i class="nav-icon fas fa-hands-helping"></i>
                         <p>
-                            Documentation & Guides
+                            Download & Guides
                         </p>
                     </a>
                 </li>

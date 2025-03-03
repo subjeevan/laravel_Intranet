@@ -15,14 +15,15 @@ class DashboardController extends Controller
     {
         $intranetdatas = local::where('type', 'intranet')->get();
         $internetdatas = local::where('type', 'internet')->get();
-        $company = company::all()->first();
-        $emails=email::all();
-        $extensions=extensions::all();
+        $company = company::all();
+        $emails = email::all();
+        $extensions = extensions::all();
 
-        return view('dashboard', compact('intranetdatas', 'internetdatas', 'company','emails','extensions'));
+        return view('dashboard', compact('intranetdatas', 'internetdatas', 'company', 'emails', 'extensions'));
     }
 
-    public function guides(){
+    public function guides()
+    {
         return view('guides');
     }
 }
