@@ -37,7 +37,7 @@ class DownloadResource extends Resource
                     ->maxLength(255),
                 Forms\Components\FileUpload::make('link')
                     ->directory('files')
-                    ->maxSize(300000),
+                    ->maxSize(3000000),
             ]);
     }
 

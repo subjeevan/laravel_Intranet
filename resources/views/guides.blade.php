@@ -21,11 +21,24 @@
         <!-- Main content -->
         <section class="content">
             <div class="row">
-                {{-- <div class="col-lg-3">
+                <div class="col-lg-3">
                     <div class="card">
+                        @foreach ($hvideos as $hvideo)
+                            <div class="card-body">
+                                <div class="video-container">
+
+                                    <video id="videoPlayer" controls>
+                                        <source src="{{ Storage::url($hvideo->link) }}" type="video/mp4">
+                                    </video>
+                                </div>
+                                <h3 class="mt-3">{{ $hvideo->name }}</h3>
+                                <p id="videoDescription">Start at {{ $hvideo->start_time }}</p>
+
+                            </div>
+                        @endforeach
 
                     </div>
-                </div> --}}
+                </div>
                 <div class="col-lg-3">
                     <div class="card">
                         <div class="card-body p-0">
@@ -41,7 +54,7 @@
                                         @foreach ($svideos as $svideo)
                                             <tr>
                                                 <td>{{ $svideo->name }}</td>
-                                                <td><a href="{{ ('storage/' . $svideo->link) }}">
+                                                <td><a href="{{ 'storage/' . $svideo->link }}">
                                                         <button class="btn btn-sm btn-primary">Download</button>
                                                     </a></td>
                                             </tr>
@@ -52,7 +65,8 @@
                         </div>
                     </div>
                     <!-- /.table-responsive -->
-                </div>                <div class="col-lg-3">
+                </div>
+                <div class="col-lg-3">
                     <div class="card">
                         <div class="card-body p-0">
                             <div class="table-responsive">
@@ -67,7 +81,7 @@
                                         @foreach ($hvideos as $hvideo)
                                             <tr>
                                                 <td>{{ $hvideo->name }}</td>
-                                                <td><a href="{{ ('storage/' . $hvideo->link) }}">
+                                                <td><a href="{{ 'storage/' . $hvideo->link }}">
                                                         <button class="btn btn-sm btn-primary">Download</button>
                                                     </a></td>
                                             </tr>
@@ -92,13 +106,13 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($files as $file)
-                                        <tr>
-                                            <td>{{ $file->name }}</td>
-                                            <td><a href="{{ ('storage/' . $file->link) }}">
-                                                    <button class="btn btn-sm btn-primary">Download</button>
-                                                </a></td>
-                                        </tr>
-                                    @endforeach
+                                            <tr>
+                                                <td>{{ $file->name }}</td>
+                                                <td><a href="{{ 'storage/' . $file->link }}">
+                                                        <button class="btn btn-sm btn-primary">Download</button>
+                                                    </a></td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
@@ -119,13 +133,13 @@
                                     </thead>
                                     <tbody>
                                         @foreach ($docs as $doc)
-                                        <tr>
-                                            <td>{{ $doc->name }}</td>
-                                            <td><a href="{{ ('storage/' . $doc->link) }}">
-                                                    <button class="btn btn-sm btn-primary">Download</button>
-                                                </a></td>
-                                        </tr>
-                                    @endforeach
+                                            <tr>
+                                                <td>{{ $doc->name }}</td>
+                                                <td><a href="{{ 'storage/' . $doc->link }}">
+                                                        <button class="btn btn-sm btn-primary">Download</button>
+                                                    </a></td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
