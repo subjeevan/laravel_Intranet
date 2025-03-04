@@ -1,4 +1,22 @@
 <x-layout>
+    <style>
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            /* Aspect ratio 16:9 */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <div class="content-header">
@@ -20,132 +38,100 @@
 
         <!-- Main content -->
         <section class="content">
-            <div class="row">
-                <div class="col-lg-3">
-                    <div class="card">
-                        @foreach ($hvideos as $hvideo)
-                            <div class="card-body">
-                                <div class="video-container">
+            <div class='row'>
+                    <div class="col-lg-6">
 
-                                    <video id="videoPlayer" controls>
-                                        <source src="{{ Storage::url($hvideo->link) }}" type="video/mp4">
-                                    </video>
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Downloads</h3>
+                            </div>
+                            <div class="card-body row justify-content-center">
+                                @foreach ($docs as $doc)
+                                    <div class="col-md-3 m-1"><a href="{{ 'storage/' . $doc->link }}">
+                                            <button type="button"
+                                                class="btn btn-primary btn-block">{{ $doc->name }}</button></a>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table m-0">
+                                        <thead>
+                                            <tr>
+                                                <th>Midas Software User Manuals</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($files as $file)
+                                                <tr>
+                                                    <td>{{ $file->name }}</td>
+                                                    <td><a href="{{ 'storage/' . $file->link }}">
+                                                            <button class="btn btn-sm btn-primary">Download</button>
+                                                        </a></td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
                                 </div>
-                                <h3 class="mt-3">{{ $hvideo->name }}</h3>
-                                <p id="videoDescription">Start at {{ $hvideo->start_time }}</p>
+                            </div>
+                        <!-- /.table-responsive -->
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Software Video Guides</h3>
+                        </div>
+                        <div class="card-body row justify-content-center">
 
-                            </div>
-                        @endforeach
+                            @foreach ($svideos as $svideo)
+                                <div class="col-12 col-sm-6 col-md-4 col-lg-12"> <!-- Adjust grid for responsiveness -->
 
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="card">
-                        <div class="card-body p-0">
-                            <div class="table-responsive">
-                                <table class="table m-0">
-                                    <thead>
-                                        <tr>
-                                            <th>Software Video Guides</th>
-                                            <th>Link</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($svideos as $svideo)
-                                            <tr>
-                                                <td>{{ $svideo->name }}</td>
-                                                <td><a href="{{ 'storage/' . $svideo->link }}">
-                                                        <button class="btn btn-sm btn-primary">Download</button>
-                                                    </a></td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
+                                    <div class="video-container">
+                                        <video class="video-player" controls>
+                                            <source src="{{ Storage::url($svideo->link) }}" type="video/mp4">
+                                        </video>
+                                    </div>
+                                    <h3 class="mt-3">{{ $svideo->name }}</h3>
+                                    <p id="videoDescription">Start at {{ $svideo->start_time }}</p>
+
+                                </div>
+                            @endforeach
                         </div>
                     </div>
-                    <!-- /.table-responsive -->
                 </div>
-                <div class="col-lg-3">
+
+                <div class="col-lg-6">
                     <div class="card">
-                        <div class="card-body p-0">
-                            <div class="table-responsive">
-                                <table class="table m-0">
-                                    <thead>
-                                        <tr>
-                                            <th>Hardware Video Guides</th>
-                                            <th>Link</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($hvideos as $hvideo)
-                                            <tr>
-                                                <td>{{ $hvideo->name }}</td>
-                                                <td><a href="{{ 'storage/' . $hvideo->link }}">
-                                                        <button class="btn btn-sm btn-primary">Download</button>
-                                                    </a></td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
+                        <div class="card-header">
+                            <h3 class="card-title">Hardware Video Guides</h3>
+                        </div>
+                        <div class="card-body row justify-content-center">
+
+                            @foreach ($hvideos as $hvideo)
+                                <div class="col-12 col-sm-6 col-md-4 col-lg-12"> <!-- Adjust grid for responsiveness -->
+
+                                    <div class="video-container">
+                                        <video class="video-player" controls>
+                                            <source src="{{ Storage::url($hvideo->link) }}" type="video/mp4">
+                                        </video>
+                                    </div>
+                                    <h3 class="mt-3">{{ $hvideo->name }}</h3>
+                                    <p id="videoDescription">Start at {{ $hvideo->start_time }}</p>
+
+                                </div>
+                            @endforeach
                         </div>
                     </div>
-                    <!-- /.table-responsive -->
-                </div>
-                <div class="col-lg-3">
-                    <div class="card">
-                        <div class="card-body p-0">
-                            <div class="table-responsive">
-                                <table class="table m-0">
-                                    <thead>
-                                        <tr>
-                                            <th>Midas Software User Manuals</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($files as $file)
-                                            <tr>
-                                                <td>{{ $file->name }}</td>
-                                                <td><a href="{{ 'storage/' . $file->link }}">
-                                                        <button class="btn btn-sm btn-primary">Download</button>
-                                                    </a></td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.table-responsive -->
-                </div>
-                <div class="col-lg-3">
-                    <div class="card">
-                        <div class="card-body p-0">
-                            <div class="table-responsive">
-                                <table class="table m-0">
-                                    <thead>
-                                        <tr>
-                                            <th>Important Files</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($docs as $doc)
-                                            <tr>
-                                                <td>{{ $doc->name }}</td>
-                                                <td><a href="{{ 'storage/' . $doc->link }}">
-                                                        <button class="btn btn-sm btn-primary">Download</button>
-                                                    </a></td>
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /.table-responsive -->
                 </div>
             </div>
         </section>
