@@ -4,25 +4,31 @@
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
-                    <div class="col-sm-10">
-                        <div class="marquee text-red">
-                            @foreach ($newses as $news)
-                                @if ($news->created_at->greaterThanOrEqualTo(now()->subDays(1)))
-                                    <marquee behavior="scroll" direction="left">
-                                        {{ $news->created_at->format('d-M-Y= ') . $news->type . ': ' . $news->message }}
-                                    </marquee>
-                                @endif
-                            @endforeach
-                        </div>
-                    </div><!-- /.col -->
+
                     <div class="col-sm-2">
-                        <ol class="breadcrumb float-sm-right">
+                        <ol class="breadcrumb float-sm-left">
                             <li class="breadcrumb-item"><a href="#">Home</a></li>
                             <li class="breadcrumb-item active">Dashboard v2</li>
                         </ol>
                     </div><!-- /.col -->
+                    <div class="col-sm-10 ">
+                        <div class="marquee">
+                            <marquee behavior="scroll" direction="left">
+                                @foreach ($newses as $news)
+                                    @if ($news->created_at->greaterThanOrEqualTo(now()->subDays(1)))
+                                        <div class="btn btn-lg btn-primary color-red">
+                                            {{ $news->created_at->format('d-M-Y= ') . $news->type . ': ' . $news->message . '' }}
+                                        </div>
+                                    @endif
+                                @endforeach
+                            </marquee>
+
+                        </div>
+                    </div><!-- /.col -->
                 </div><!-- /.row -->
+
             </div><!-- /.container-fluid -->
+
         </div>
         <!-- /.content-header -->
 

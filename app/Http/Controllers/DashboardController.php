@@ -20,20 +20,19 @@ class DashboardController extends Controller
         $company = company::all();
         $emails = email::all();
         $extensions = extensions::all();
-        $newses=News::all();
-        // return compact('newses');
-        return view('dashboard', compact('newses','intranetdatas', 'internetdatas', 'company', 'emails', 'extensions'));
+        $newses = News::all();
+        return view('dashboard', compact('newses', 'intranetdatas', 'internetdatas', 'company', 'emails', 'extensions'));
     }
-
     public function guides()
     {
-        $hvideos = Download::where('type','hvideo')->get();
-        $svideos = Download::where('type','svideo')->get();
-        $files = Download::where('type','file')->get();
-        $docs = Download::where('type','doc')->get();
-        return view('guides', compact('files','svideos','hvideos','docs'));
+        $hvideos = Download::where('type', 'hvideo')->get();
+        $svideos = Download::where('type', 'svideo')->get();
+        $files = Download::where('type', 'file')->get();
+        $docs = Download::where('type', 'doc')->get();
+        return view('guides', compact('files', 'svideos', 'hvideos', 'docs'));
     }
-    public function changepwd(){
+    public function changepwd()
+    {
         return view('changepassword');
     }
 }
