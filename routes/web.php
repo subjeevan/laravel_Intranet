@@ -1,15 +1,37 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SocialiteController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
-// Route::get('dashboard', function () {
-//     return view('dashboard');
-// })->name('dashboard');
 
 Route::get('guides', [DashboardController::class, 'guides'])->name('guides');
-Route::get('intranet', [DashboardController::class,'home'])->name('dashboard');
-Route::get('changepwd',[DashboardController::class,'changepwd'])->name('changepwd');
+Route::get('intranet', [DashboardController::class, 'home'])->name('dashboard');
+Route::get('changepwd', [DashboardController::class, 'changepwd'])->name('changepwd');
+Route::controller(SocialiteController::class)->group(function () {
+    Route::get('auth/redirection/{provider}', 'authProviderRedirect')->name('auth.redirection');
+
+    Route::get('auth/{provider}/callback', 'socialAuthentication')->name('auth.callback');
+});
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::get('phpinfo',function(){
+    return view('phpinfo');
+});
+Route::get('oracle',function(){
+    return view('oracletest');
+});
+require __DIR__ . '/auth.php';

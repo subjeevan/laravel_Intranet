@@ -36,7 +36,7 @@
     <link rel="stylesheet" href="/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed">
+<body class="hold-transition sidebar-mini layout-fixed layout-footer-fixed ">
     <div class="wrapper">
         <!-- Preloader -->
         {{-- <div class="preloader flex-column justify-content-center align-items-center">
@@ -54,7 +54,7 @@
         {{ $slot }}
 
         <!-- /.content-wrapper -->
-        <footer class="main-footer">
+        <footer class="main-footer text-sm">
             <strong> Developed By <a href="">Jeevan Subedi</a>.</strong>
             <div class="float-right d-none d-sm-inline-block">
                 <b>Version </b> 1.0.0
