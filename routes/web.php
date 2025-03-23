@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HospitalController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SocialiteController;
 use Illuminate\Support\Facades\Route;
@@ -31,7 +32,6 @@ Route::middleware('auth')->group(function () {
 Route::get('phpinfo',function(){
     return view('phpinfo');
 });
-Route::get('oracle',function(){
-    return view('oracletest');
-});
+Route::get('oracle',[HospitalController::class,'index'])->name('oracle');
+
 require __DIR__ . '/auth.php';

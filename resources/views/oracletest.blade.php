@@ -7,7 +7,7 @@ $username = 'beh_user';
 $password = 'pwd_beh';
 
 // Oracle DB connection string
-$connection_string = '172.16.20.7/hospital';
+$connection_string = '172.16.0.27/hospital';
 
 // Connect to an Oracle database
 $connection = oci_connect($username, $password, $connection_string);
@@ -16,7 +16,7 @@ $connection = oci_connect($username, $password, $connection_string);
 if (!$connection) {
     // If connection failed, display error message
     $e = oci_error();
-    
+
     echo 'Oops :( connection failed. Error: ' . $e['message'];
 } else {
     // If connection successful, display a success message

@@ -28,23 +28,74 @@
 
         <!-- Main content -->
         <section class="content">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Intranet Sites</h3>
+                        </div>
+                        <div class="card-body row justify-content-center">
+                            @if ($intranetdatas)
+                                @foreach ($intranetdatas as $intranetdata)
+                                    <div class="col-md-3 m-1"><a href="{{ $intranetdata->url }}">
+                                            <button type="button"
+                                                class="btn btn-primary btn-block">{{ $intranetdata->name }}</button></a>
+                                    </div>
+                                @endforeach
 
-            <div class="card">
-                <div class="card-header">
-                    <h3 class="card-title">Intranet Sites</h3>
+                            @endif
+                        </div>
+                    </div>
                 </div>
-                <div class="card-body row justify-content-center">
-                    @if ($intranetdatas)
-                        @foreach ($intranetdatas as $intranetdata)
-                            <div class="col-md-3 m-1"><a href="{{ $intranetdata->url }}">
-                                    <button type="button"
-                                        class="btn btn-primary btn-block">{{ $intranetdata->name }}</button></a>
-                            </div>
-                        @endforeach
+                <div class="col-md-4">
+                    <!-- Widget: user widget style 1 -->
+                    <div class="card shadow">
+                        <!-- Add the bg color to the header using any of the bg-* classes -->
+                        <div class=" bg-info">
+                            <h3 class="">BEH Registration Data</h3>
+                        </div>
 
-                    @endif
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <div class="description-block">
+                                        <h5 class="description-header">{{ $pcounts->newgeneral }}</h5>
+                                        <span class="description-text">Gen New</span>
+                                    </div>
+                                    <!-- /.description-block -->
+                                </div>
+                                <div class="col-sm-3 border-right">
+                                    <div class="description-block">
+                                        <h5 class="description-header">{{ $pcounts->followupgeneral }}</h5>
+                                        <span class="description-text">Gen Old</span>
+                                    </div>
+                                    <!-- /.description-block -->
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-sm-3 border-right">
+                                    <div class="description-block">
+                                        <h5 class="description-header">{{ $pcounts->newinsurance }}</h5>
+                                        <span class="description-text">Ins New</span>
+                                    </div>
+                                    <!-- /.description-block -->
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-sm-3">
+                                    <div class="description-block">
+                                        <h5 class="description-header">{{ $pcounts->followupinsurance }}</h5>
+                                        <span class="description-text">Ins Old</span>
+                                    </div>
+                                    <!-- /.description-block -->
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+                        </div>
+                    </div>
+                    <!-- /.widget-user -->
                 </div>
             </div>
+
             <div class="card ">
                 <div class="card-header">
                     <h3 class="card-title">Internet Sites</h3>

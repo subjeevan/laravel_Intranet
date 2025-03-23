@@ -61,7 +61,29 @@ return [
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
         ],
+        'ora_hospital' => [
+            'driver'        => 'oracle',
+            'host'          => env('ORCL_HOST', '127.0.0.1'),
+            'port'          => env('ORCL_PORT', '1521'),
+            'database'      => env('DB_SERVICE_NAME', 'hospital'), // Oracle Database Name
+            'username'      => env('DB_HOSPITAL_USER', 'HOSPITAL_USER'),
+            'password'      => env('DB_HOSPITAL_PASS', 'hospital_password'),
+            'charset'       => 'AL32UTF8',
+            'prefix'        => '',
+            'strict'        => false,
+        ],
 
+        'ora_pharmacy' => [
+            'driver'        => 'oracle',
+            'host'          => env('ORCL_HOST', '127.0.0.1'),
+            'port'          => env('ORCL_PORT', '1521'),
+            'database'      => env('DB_SERVICE_NAME', 'DUMMY'), // Oracle Database Name
+            'username'      => env('DB_PHARMACY_USER', 'PHARMACY_USER'),
+            'password'      => env('DB_PHARMACY_PASS', 'pharmacy_password'),
+            'charset'       => 'AL32UTF8',
+            'prefix'        => '',
+            'strict'        => false,
+        ],
         'mariadb' => [
             'driver' => 'mariadb',
             'url' => env('DB_URL'),
@@ -96,7 +118,6 @@ return [
             'search_path' => 'public',
             'sslmode' => 'prefer',
         ],
-
         'sqlsrv' => [
             'driver' => 'sqlsrv',
             'url' => env('DB_URL'),

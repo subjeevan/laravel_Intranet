@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\View;
 use App\Models\company;
+use App\Models\Hospital;
 
 abstract class Controller
 {
@@ -12,11 +13,13 @@ abstract class Controller
         $hostname = gethostbyaddr($_SERVER['REMOTE_ADDR']);
         $company = company::all()->first();
         $hostip = getenv('remote_addr');
+        $pcounts=Hospital::all()->first();
 
         View::share([
             'company' => $company,
             'hostname' => $hostname,
             'hostip' => $hostip,
+            'pcounts'=>$pcounts,
         ]);
     }
 }
