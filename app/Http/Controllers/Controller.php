@@ -13,13 +13,15 @@ abstract class Controller
         $hostname = gethostbyaddr($_SERVER['REMOTE_ADDR']);
         $company = company::all()->first();
         $hostip = getenv('remote_addr');
-        $pcounts=Hospital::all()->first();
+        $pcounts = HOSPITAL::leftJoin('HS_SUOR_SUBORG', 'GENINSCOUNT.PAVI_SUBORGID', '=', 'HS_SUOR_SUBORG.SUOR_BRANCHID')
+            ->select('GENINSCOUNT.*', 'HS_SUOR_SUBORG.SUOR_BRANCHNAME')
+            ->get();
 
         View::share([
             'company' => $company,
             'hostname' => $hostname,
             'hostip' => $hostip,
-            'pcounts'=>$pcounts,
+            'pcounts' => $pcounts,
         ]);
     }
 }

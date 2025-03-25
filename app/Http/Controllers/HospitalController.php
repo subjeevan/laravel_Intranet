@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Hospital;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
-class HospitalController extends Controller
+abstract class HospitalController
 {
-   public function index(){
+    public function __construct(){
 
-    return ($p);
-        return view('oracletest');
+    $pcounts = HOSPITAL::leftJoin('HS_SUOR_SUBORG', 'GENINSCOUNT.PAVI_SUBORGID', '=', 'HS_SUOR_SUBORG.SUOR_BRANCHID')
+    ->select('GENINSCOUNT.*', 'HS_SUOR_SUBORG.SUOR_BRANCHNAME')
+    ->get();
+
    }
 }
