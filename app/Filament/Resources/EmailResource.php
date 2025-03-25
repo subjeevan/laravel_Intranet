@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\NewsResource\Pages;
-use App\Filament\Resources\NewsResource\RelationManagers;
-use App\Models\News;
+use App\Filament\Resources\EmailResource\Pages;
+use App\Filament\Resources\EmailResource\RelationManagers;
+use App\Models\Email;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -13,9 +13,9 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class NewsResource extends Resource
+class EmailResource extends Resource
 {
-    protected static ?string $model = News::class;
+    protected static ?string $model = Email::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -23,15 +23,18 @@ class NewsResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('type')
+                Forms\Components\TextInput::make('username')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('department')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('message')
+                Forms\Components\TextInput::make('email')
+                    ->email()
                     ->required()
-                    ->maxLength(1255),
-                Forms\Components\TextInput::make('link')
-                    ->maxLength(255)
-                    ->default(null),
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('location')
+                    ->required()
+                    ->maxLength(255),
             ]);
     }
 
@@ -39,16 +42,18 @@ class NewsResource extends Resource
     {
         return $table
             ->columns([
+                Tables\Columns\TextColumn::make('username')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('department')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('email')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('location')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
-                ->date()
-                ->sortable(),
-                Tables\Columns\TextColumn::make('type')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('message')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('link')
-                    ->searchable(),
-
+                    ->dateTime()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
@@ -77,9 +82,9 @@ class NewsResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListNews::route('/'),
-            'create' => Pages\CreateNews::route('/create'),
-            'edit' => Pages\EditNews::route('/{record}/edit'),
+            'index' => Pages\ListEmails::route('/'),
+            'create' => Pages\CreateEmail::route('/create'),
+            'edit' => Pages\EditEmail::route('/{record}/edit'),
         ];
     }
 }
