@@ -35,4 +35,10 @@ class DashboardController extends Controller
     {
         return view('changepassword');
     }
+
+    public function apitest()
+    {
+
+        return view('apitest');
+    }
 }

@@ -39,47 +39,50 @@
         <!-- Main content -->
         <section class="content">
             <div class='row'>
-                    <div class="col-lg-6">
+                <div class="col-lg-6">
 
-                        <div class="card">
-                            <div class="card-header">
-                                <h3 class="card-title">Downloads</h3>
-                            </div>
-                            <div class="card-body row justify-content-center">
-                                @foreach ($docs as $doc)
-                                    <div class="col-md-3 m-1"><a href="{{ 'storage/' . $doc->link }}">
-                                            <button type="button"
-                                                class="btn btn-primary btn-block">{{ $doc->name }}</button></a>
-                                    </div>
-                                @endforeach
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Downloads</h3>
+                        </div>
+                        <div class="card-body row justify-content-center">
+                            @foreach ($docs as $doc)
+                                <div class="col-md-3 m-1"><a href="{{ 'storage/' . $doc->link }}">
+                                        <button type="button"
+                                            class="btn btn-primary btn-block">{{ $doc->name }}</button></a>
+                                </div>
+                            @endforeach
+                            <div class="col-md-3 m-1"><a href="{{ route('apitest') }}">
+                                    <button type="button" class="btn btn-primary btn-block">Api Test</button></a>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <div class="col-lg-6">
-                        <div class="card">
-                            <div class="card-body p-0">
-                                <div class="table-responsive">
-                                    <table class="table m-0">
-                                        <thead>
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table m-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Midas Software User Manuals</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($files as $file)
                                             <tr>
-                                                <th>Midas Software User Manuals</th>
-                                                <th></th>
+                                                <td>{{ $file->name }}</td>
+                                                <td><a href="{{ 'storage/' . $file->link }}">
+                                                        <button class="btn btn-sm btn-primary">Download</button>
+                                                    </a></td>
                                             </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($files as $file)
-                                                <tr>
-                                                    <td>{{ $file->name }}</td>
-                                                    <td><a href="{{ 'storage/' . $file->link }}">
-                                                            <button class="btn btn-sm btn-primary">Download</button>
-                                                        </a></td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
-                                </div>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
+                        </div>
                         <!-- /.table-responsive -->
                     </div>
                     <!-- /.table-responsive -->

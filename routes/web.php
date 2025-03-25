@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('guides', [DashboardController::class, 'guides'])->name('guides');
 Route::get('intranet', [DashboardController::class, 'home'])->name('dashboard');
 Route::get('changepwd', [DashboardController::class, 'changepwd'])->name('changepwd');
+Route::get('/apitest', [DashboardController::class, 'apitest'])->name('apitest');
 Route::controller(SocialiteController::class)->group(function () {
     Route::get('auth/redirection/{provider}', 'authProviderRedirect')->name('auth.redirection');
 
@@ -29,9 +30,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('phpinfo',function(){
+Route::get('phpinfo', function () {
     return view('phpinfo');
 });
-Route::get('oracle',[HospitalController::class,'index'])->name('oracle');
+Route::get('oracle', [HospitalController::class, 'index'])->name('oracle');
 
 require __DIR__ . '/auth.php';
