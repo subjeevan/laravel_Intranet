@@ -6,13 +6,13 @@
                 <div class="row mb-2">
                     <div class="col-sm-10">
                         <div class="marquee text-red">
-                            @foreach ($newses as $news)
-                                @if ($news->created_at->greaterThanOrEqualTo(now()->subDays(1)))
-                                    <marquee behavior="scroll" direction="left">
-                                        {{ $news->created_at->format('d-M-Y= ') . $news->type . ': ' . $news->message }}
-                                    </marquee>
-                                @endif
-                            @endforeach
+                            @if ($newses)
+                                <marquee behavior="scroll" direction="left">
+                                    @foreach ($newses as $news)
+                                        {{ $news->created_at->format('d-M-Y= ') . $news->type . ': ' . $news->message}}&nbsp;||&nbsp;
+                                    @endforeach
+                                </marquee>
+                            @endif
                         </div>
                     </div><!-- /.col -->
                     <div class="col-sm-2">
@@ -37,11 +37,12 @@
                         </div>
                         <div class="card-body row justify-content-center">
                             @if ($intranetdatas)
-                            @foreach ($intranetdatas as $intranetdata)
-                            <div class="col-md-3 m-1"><a href="{{ $intranetdata->url }}">
-                                    <button type="button" class="btn btn-primary btn-block">{{ $intranetdata->name }}</button></a>
-                            </div>
-                            @endforeach
+                                @foreach ($intranetdatas as $intranetdata)
+                                    <div class="col-md-3 m-1"><a href="{{ $intranetdata->url }}">
+                                            <button type="button"
+                                                class="btn btn-primary btn-block">{{ $intranetdata->name }}</button></a>
+                                    </div>
+                                @endforeach
                             @endif
                         </div>
                     </div>
@@ -51,11 +52,12 @@
                         </div>
                         <div class="card-body row justify-content-center">
                             @if ($internetdatas)
-                            @foreach ($internetdatas as $internetdata)
-                            <div class="col-md-2 m-1"><a href="{{ $internetdata->url }}">
-                                    <button type="button" class="btn btn-primary btn-block">{{ $internetdata->name }}</button></a>
-                            </div>
-                            @endforeach
+                                @foreach ($internetdatas as $internetdata)
+                                    <div class="col-md-2 m-1"><a href="{{ $internetdata->url }}">
+                                            <button type="button"
+                                                class="btn btn-primary btn-block">{{ $internetdata->name }}</button></a>
+                                    </div>
+                                @endforeach
                             @endif
                         </div>
                     </div>
@@ -82,13 +84,13 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($pcounts as $pcount)
-                                    <tr>
-                                        <td class="text-center">{{ $pcount->suor_branchname }}</td>
-                                        <td class="text-center">{{ $pcount->newgeneral }}</td>
-                                        <td class="text-center">{{ $pcount->followupgeneral }}</td>
-                                        <td class="text-center">{{ $pcount->newinsurance }}</td>
-                                        <td class="text-center">{{ $pcount->followupinsurance }}</td>
-                                    </tr>
+                                        <tr>
+                                            <td class="text-center">{{ $pcount->suor_branchname }}</td>
+                                            <td class="text-center">{{ $pcount->newgeneral }}</td>
+                                            <td class="text-center">{{ $pcount->followupgeneral }}</td>
+                                            <td class="text-center">{{ $pcount->newinsurance }}</td>
+                                            <td class="text-center">{{ $pcount->followupinsurance }}</td>
+                                        </tr>
                                     @endforeach
                                 </tbody>
                             </table>

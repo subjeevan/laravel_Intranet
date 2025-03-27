@@ -20,7 +20,7 @@ class DashboardController extends Controller
         $company = company::all();
         $emails = email::all();
         $extensions = extensions::all();
-        $newses = News::all();
+        $newses = News::where('created_at','>=',now()->subdays(7))->get();
         return view('dashboard', compact('newses', 'intranetdatas', 'internetdatas', 'company', 'emails', 'extensions'));
     }
     public function guides()
