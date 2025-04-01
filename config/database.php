@@ -61,7 +61,7 @@ return [
                 PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
             ]) : [],
         ],
-        'ora_hospital' => [
+        'h' => [
             'driver'        => 'oracle',
             'host'          => env('ORCL_HOST', '127.0.0.1'),
             'port'          => env('ORCL_PORT', '1521'),
@@ -73,7 +73,7 @@ return [
             'strict'        => false,
         ],
 
-        'ora_pharmacy' => [
+        'p' => [
             'driver'        => 'oracle',
             'host'          => env('ORCL_HOST', '127.0.0.1'),
             'port'          => env('ORCL_PORT', '1521'),

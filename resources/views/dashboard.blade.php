@@ -29,7 +29,6 @@
         <!-- Main content -->
         <section class="content">
             <div class="row">
-
                 <div class="col-lg-8">
                     <div class="card">
                         <div class="card-header">
@@ -80,6 +79,8 @@
                                         <th class="text-center">Old</th>
                                         <th class="text-center">New</th>
                                         <th class="text-center">Old</th>
+                                        <th class="text-center">Total</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -90,16 +91,50 @@
                                             <td class="text-center">{{ $pcount->followupgeneral }}</td>
                                             <td class="text-center">{{ $pcount->newinsurance }}</td>
                                             <td class="text-center">{{ $pcount->followupinsurance }}</td>
+                                            <td class="text-center">{{ $pcount->followupinsurance +$pcount->newinsurance +$pcount->followupgeneral + $pcount->newgeneral }}</td>
+
                                         </tr>
                                     @endforeach
                                 </tbody>
                             </table>
                         </div>
                     </div>
+                    <div class="card shadow">
+                        <div class="card-header bg-info text-center align-middle p-3">
+                            <h4 class="font-weight-bold mb-0">Patient Count by Room                            </h4>
+                        </div>
+                        <div class="card-body p-2">
+                                           <table id="rcount"
+                            class="table table-bordered table-striped dataTable dtr-inline"
+                            aria-describedby="rcount_info">
+                            <thead>
+                                <tr>
+                                    <th class="sorting" tabindex="0" aria-controls="rcount"
+                                        rowspan="1" colspan="1"
+                                        aria-label="Platform(s): activate to sort column ascending">
+                                        Room No.</th>
+                                    <th class="sorting" tabindex="0" aria-controls="rcount"
+                                        rowspan="1" colspan="1"
+                                        aria-label="Browser: activate to sort column ascending">
+                                        Patient Count
+                                    </th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($docvisits as $docvisit)
+                                <tr class="odd">
+                                        <td>{{$docvisit->docname}}</td>
+                                        <td>{{$docvisit->patient_count}}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
                 </div>
             </div>
-
-
             <div class="row">
                 <div class="col-lg-6">
                     <div class="card">
@@ -228,7 +263,7 @@
             "responsive": true,
             "lengthChange": false,
             "autoWidth": false,
-            "buttons": ["excel", "pdf", "print", "colvis"]
+            "buttons": ["excel", "print"]
         };
 
         // Initialize Extension Table
@@ -238,5 +273,8 @@
         // Initialize Email Table
         $("#email").DataTable(dataTableOptions).buttons().container().appendTo(
             '#email_wrapper .col-md-6:eq(0)');
+                    // Initialize Email Table
+        $("#rcount").DataTable(dataTableOptions).buttons().container().appendTo(
+            '#rcount_wrapper .col-md-6:eq(0)');
     });
 </script>
