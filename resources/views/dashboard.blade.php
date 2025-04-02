@@ -29,7 +29,7 @@
         <!-- Main content -->
         <section class="content">
             <div class="row">
-                <div class="col-lg-8">
+                <div class="col-lg-6">
                     <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Intranet Sites</h3>
@@ -45,7 +45,9 @@
                             @endif
                         </div>
                     </div>
-                    <div class="card mt-3">
+                </div>
+                <div class="col-lg-6">
+                    <div class="card">
                         <div class="card-header">
                             <h3 class="card-title">Internet Sites</h3>
                         </div>
@@ -61,51 +63,102 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                </div>
+                <div class="col-md-6">
+                </div>
+            </div>
+                    <!-- Dashboard-->
+            <div class="row">
+                <div class="col-lg-12">
+
                     <div class="card shadow">
-                        <div class="card-header bg-info text-center align-middle p-3">
-                            <h4 class="font-weight-bold mb-0">Registration Data</h4>
+                        <div class="card-header bg-info text-center align-middle p-1">
+                            <h4 class="font-weight-bold mb-0">Today's Registration Data</h4>
                         </div>
                         <div class="card-body p-2">
                             <table class="table table-bordered table-sm">
                                 <thead>
-                                    <tr>
-                                        <th rowspan='2' class="text-center align-middle">Branch</th>
-                                        <th colspan="2" class="text-center align-middle">General</th>
-                                        <th colspan='2' class="text-center align-middle">Insurance</th>
+                                    <tr class="text-center align-middle">
+                                        <th rowspan='3'>Branch</th>
+                                        <th colspan="4">New </th>
+                                        <th colspan="4">Old</th>
+                                        <th rowspan="3">EMG.</th>
+                                        <th colspan='10' >Total</th>
+                                        <th rowspan="3">Grand</th>
                                     </tr>
-                                    <tr>
-                                        <th class="text-center">New</th>
-                                        <th class="text-center">Old</th>
-                                        <th class="text-center">New</th>
-                                        <th class="text-center">Old</th>
-                                        <th class="text-center">Total</th>
-
+                                    <tr class="text-center align-middle">
+                                        <th colspan="2"> General</th>
+                                        <th colspan='2'> Insurance</th>
+                                        <th colspan="2"> General</th>
+                                        <th colspan='2'> Insurance</th>
+                                        <th colspan='3' >General</th>
+                                        <th colspan='3' >Insurance</th>
+                                        <th colspan='2' >Department</th>
+                                        <th colspan='2' >New/Old</th>
+                                    </tr>
+                                    <tr class="text-center">
+                                        <th>Adult</th>
+                                        <th>Ped</th>
+                                        <th>Adult</th>
+                                        <th>Ped</th>
+                                        <th>Adult</th>
+                                        <th>Ped</th>
+                                        <th>Adult</th>
+                                        <th>Ped</th>
+                                        <th >Adult</th>
+                                        <th >Ped</th>
+                                        <th >Total</th>
+                                        <th >Adult</th>
+                                        <th >Ped</th>
+                                        <th >Total</th>
+                                        <th >Adult</th>
+                                        <th >Ped</th>
+                                        <th >New</th>
+                                        <th >Old</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($pcounts as $pcount)
-                                        <tr>
-                                            <td class="text-center">{{ $pcount->suor_branchname }}</td>
-                                            <td class="text-center">{{ $pcount->newgeneral }}</td>
-                                            <td class="text-center">{{ $pcount->followupgeneral }}</td>
-                                            <td class="text-center">{{ $pcount->newinsurance }}</td>
-                                            <td class="text-center">{{ $pcount->followupinsurance }}</td>
-                                            <td class="text-center">{{ $pcount->followupinsurance +$pcount->newinsurance +$pcount->followupgeneral + $pcount->newgeneral }}</td>
-
+                                        <tr class="text-center" >
+                                            <td>{{ $pcount->suor_branchname }}</td>
+                                            <td>{{ $pcount->newgen }}</td>
+                                            <td>{{ $pcount->newpedgen }}</td>
+                                            <td>{{ $pcount->newgeninsurance }}</td>
+                                            <td>{{ $pcount->newpedinsurance }}</td>
+                                            <td>{{ $pcount->followupgeneral }}</td>
+                                            <td>{{ $pcount->followuped }}</td>
+                                            <td>{{ $pcount->followupgeninsurance }}</td>
+                                            <td>{{ $pcount->followuppedinsurance }}</td>
+                                            <td>{{ $pcount->newemggen }}</td>
+                                            <td>{{ $pcount->newgen + $pcount->followupgeneral}}</td>
+                                            <td>{{ $pcount->newpedgen + $pcount->followuped}}</td>
+                                            <td>{{ $pcount->newgen + $pcount->newpedgen + $pcount->followupgeneral + $pcount->followuped}}</td>
+                                            <td>{{ $pcount->newgeninsurance + $pcount->followupgeninsurance }}</td>
+                                            <td>{{ $pcount->newpedinsurance + $pcount->followuppedinsurance }}</td>
+                                            <td>{{ $pcount->newgeninsurance+ $pcount->newpedinsurance +  $pcount->followupgeninsurance + $pcount->followuppedinsurance }}</td>
+                                            <td>{{ $pcount->newgen + $pcount->newgeninsurance + $pcount->followupgeneral + $pcount->followupgeninsurance}}</td>
+                                            <td>{{ $pcount->newpedgen + $pcount->newpedinsurance +  $pcount->followuped  + $pcount->followuppedinsurance }}</td>
+                                            <td>{{ $pcount->newemggen +$pcount->newpedgen + $pcount->newpedinsurance  + $pcount->newgen + $pcount->newgeninsurance }}</td>
+                                            <td>{{ $pcount->followuped  + $pcount->followuppedinsurance + $pcount->followupgeneral + $pcount->followupgeninsurance }}</td>
+                                            <td>{{ $pcount->newemggen +$pcount->newpedgen + $pcount->newpedinsurance +  $pcount->followuped  + $pcount->followuppedinsurance + $pcount->newgen + $pcount->newgeninsurance + $pcount->followupgeneral + $pcount->followupgeninsurance }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
                             </table>
                         </div>
                     </div>
+                </div>
+                <div class="col-lg-6">
                     <div class="card shadow">
-                        <div class="card-header bg-info text-center align-middle p-3">
-                            <h4 class="font-weight-bold mb-0">Patient Count by Room                            </h4>
+                        <div class="card-header">
+                            <h4 class="card-title">Patient's in OPD</h4>
                         </div>
                         <div class="card-body p-2">
                                            <table id="rcount"
-                            class="table table-bordered table-striped dataTable dtr-inline"
+                            class="table table-bordered table-striped dataTable dtr-inline table-sm"
                             aria-describedby="rcount_info">
                             <thead>
                                 <tr>
@@ -124,7 +177,7 @@
                             </thead>
                             <tbody>
                                 @foreach ($docvisits as $docvisit)
-                                <tr class="odd">
+                                <tr class="odd "  >
                                         <td>{{$docvisit->docname}}</td>
                                         <td>{{$docvisit->patient_count}}</td>
                                     </tr>
@@ -134,8 +187,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
                 <div class="col-lg-6">
                     <div class="card">
                         <div class="card-header">
@@ -148,7 +199,7 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <table id="extension"
-                                            class="table table-bordered table-striped dataTable dtr-inline"
+                                            class="table-sm table table-bordered table-striped dataTable dtr-inline"
                                             aria-describedby="extension_info">
                                             <thead>
                                                 <tr>
@@ -204,7 +255,7 @@
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <table id="email"
-                                            class="table table-bordered table-striped dataTable dtr-inline"
+                                            class="table-sm table table-bordered table-striped dataTable dtr-inline"
                                             aria-describedby="email_info">
                                             <thead>
                                                 <tr>
@@ -248,10 +299,10 @@
                         <!-- /.card-body -->
                     </div>
                 </div>
-                <!-- /.col-md-6 -->
+            </div>
+                    <!-- Table-->
+            <div class="row">
 
-
-                <!-- /.col-md-6 -->
             </div>
         </section>
         <!-- /.content -->
@@ -263,6 +314,8 @@
             "responsive": true,
             "lengthChange": false,
             "autoWidth": false,
+            "pageLength": 5,
+            "order": [],
             "buttons": ["excel", "print"]
         };
 
