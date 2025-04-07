@@ -72,7 +72,17 @@ return [
             'prefix'        => '',
             'strict'        => false,
         ],
-
+        'dh' => [
+            'driver'        => 'oracle',
+            'host'          => env('ORCL_DHOST', '127.0.0.1'),
+            'port'          => env('ORCL_PORT', '1521'),
+            'database'      => env('DB_SERVICE_NAME', 'hospital'), // Oracle Database Name
+            'username'      => env('DB_HOSPITAL_USER', 'HOSPITAL_USER'),
+            'password'      => env('DB_HOSPITAL_PASS', 'hospital_password'),
+            'charset'       => 'AL32UTF8',
+            'prefix'        => '',
+            'strict'        => false,
+        ],
         'p' => [
             'driver'        => 'oracle',
             'host'          => env('ORCL_HOST', '127.0.0.1'),

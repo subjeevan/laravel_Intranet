@@ -53,6 +53,23 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('calander') }}" class="nav-link {{ Route::is('calander') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-calendar"></i>
+                        <p>
+                            Calander
+                        </p>
+                    </a>
+                </li>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('dummydata') }}" class="nav-link {{ Route::is('dummydata') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-calendar"></i>
+                        <p>
+                            Dummy
+                        </p>
+                    </a>
+                </li>
                 {{-- <li class="nav-item">
                     <a href="/docs/3.1//implementations.html" class="nav-link">
                         <i class="nav-icon fas fa-bookmark"></i>

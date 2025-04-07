@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admissions;
 use App\Models\company;
 use App\Models\Download;
 use App\Models\local;
 use App\Models\email;
 use App\Models\extensions;
+use App\Models\Global\Api;
 use App\Models\Hospital;
 use App\Models\News;
+use App\Models\Otbook;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -19,8 +22,10 @@ class DashboardController extends Controller
 {
 
     public function home()
-    {
-        $today=NepaliDate::create(\Carbon\Carbon::now())->toBS(); // 2078-4-21
+    {   $tdayengdate=Carbon::now();
+        $tomengdate=Carbon::tomorrow();
+        $today=NepaliDate::create($tdayengdate)->toBS(); // 2078-4-21
+        $tomorrow = NepaliDate::create($tomengdate)->toBS();
         $ntoday = str_replace('-', '/', $today);
         $intranetdatas = local::where('type', 'intranet')->get();
         $internetdatas = local::where('type', 'internet')->get();
@@ -39,8 +44,20 @@ class DashboardController extends Controller
                 ->groupBy('docname')
                 ->orderBy('patient_count','desc')
                 ->get();
-        $newses = News::where('created_at','>=',now()->subdays(7))->get();
-        return view('dashboard', compact('docvisits',   'pcounts','newses', 'intranetdatas', 'internetdatas',  'emails', 'extensions'));
+        $admissions = Admissions::select([
+                'CURDEPNAME as dept',
+                DB::raw("SUM(CASE WHEN SCHEMENAME = 'SOCIAL HEALTH INSURANCE' THEN 1 ELSE 0 END) as Insurance"),
+                DB::raw("SUM(CASE WHEN SCHEMENAME != 'SOCIAL HEALTH INSURANCE' THEN 1 ELSE 0 END) as General"),
+                DB::raw("SUM(CASE WHEN CAMPID IS NOT NULL THEN 1 ELSE 0 END) as CAMP"),
+                DB::raw("SUM(CASE WHEN CAMPID IS NULL THEN 1 ELSE 0 END) as HOSPITAL"),
+                DB::raw('COUNT(INPATIENTIDSTR) as count'),
+            ])
+            ->where('ISDISCHARGED', 'N')
+            ->groupBy('CURDEPNAME')
+            ->get();
+
+        $otbooks=Otbook::select('OTBO_SURGERYTYPE as Surgerytype',DB::raw('count(OTBO_PATIENTID) as count'))->where('OTBO_PLANDATE',$date)->groupby('OTBO_SURGERYTYPE')-> orderby('count','desc')->get();
+        return view('dashboard', compact('docvisits',   'pcounts', 'intranetdatas', 'internetdatas',  'emails', 'extensions','otbooks','admissions'));
     }
     public function guides()
     {
@@ -57,7 +74,13 @@ class DashboardController extends Controller
 
     public function apitest()
     {
+        $cred=Api::all();
+        return($cred);
 
         return view('apitest');
+    }
+
+    public function calander(){
+        return view('calander');
     }
 }
