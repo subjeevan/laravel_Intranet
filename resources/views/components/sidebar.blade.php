@@ -70,6 +70,14 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('admindashboard') }}" class="nav-link {{ Route::is('dummydata') ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <p>
+                            Admin Dashboard
+                        </p>
+                    </a>
+                </li>
                 {{-- <li class="nav-item">
                     <a href="/docs/3.1//implementations.html" class="nav-link">
                         <i class="nav-icon fas fa-bookmark"></i>

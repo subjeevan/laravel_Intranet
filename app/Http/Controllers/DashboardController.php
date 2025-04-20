@@ -41,6 +41,28 @@ class DashboardController extends Controller
             ->select('GENINSCOUNT.*', 'HS_SUOR_SUBORG.SUOR_BRANCHNAME')
             ->where('VISITDATEAD', $nepaliDates['todayad'])
             ->get();
+        return view('dashboard', compact(   'pcounts', 'intranetdatas', 'internetdatas',  'emails', 'extensions'));
+    }
+    public function admindashboard()
+    {
+        $nepaliDates = app('nepali_dates');
+        // return($nepaliDates['todaybs']);
+        $intranetdatas = local::where('type', 'intranet')->get();
+        $sevenDaysAgo = Carbon::today()->subDays(4);
+
+        $intranetdatas = $intranetdatas->map(function ($item) use ($sevenDaysAgo) {
+            // Assuming your update column is named 'update'
+            $item->blink = $item->updated_at && Carbon::parse($item->updated_at)->greaterThanOrEqualTo($sevenDaysAgo);
+            return $item;
+        });
+        $internetdatas = local::where('type', 'internet')->get();
+        $emails = email::all();
+        $extensions = extensions::all();
+        $suborgid = 1;
+        $pcounts = Hospital::leftJoin('HS_SUOR_SUBORG', 'GENINSCOUNT.PAVI_SUBORGID', '=', 'HS_SUOR_SUBORG.SUOR_BRANCHID')
+            ->select('GENINSCOUNT.*', 'HS_SUOR_SUBORG.SUOR_BRANCHNAME')
+            ->where('VISITDATEAD', $nepaliDates['todayad'])
+            ->get();
         $docvisits = DB::connection('h')
             ->table('VW_CL_OPDPATIENTVISITEDLIST')
             ->select('docname', DB::raw('count(patientid) as patient_count'))
@@ -70,7 +92,7 @@ class DashboardController extends Controller
         $otcount = Otbook::select(DB::raw('count(OTBO_PATIENTID) as count'))->where('OTBO_PLANDATE', $nepaliDates['todaybs'])->first();
         // return($otcount);
 
-        return view('dashboard', compact( 'totaladmissions', 'totalinsurance', 'totalgeneral', 'totalcamp', 'totalhospitaladmissions', 'otcount', 'docvisits',   'pcounts', 'intranetdatas', 'internetdatas',  'emails', 'extensions', 'otbooks', 'admissions'));
+        return view('admindashboard', compact( 'totaladmissions', 'totalinsurance', 'totalgeneral', 'totalcamp', 'totalhospitaladmissions', 'otcount', 'docvisits',   'pcounts', 'intranetdatas', 'internetdatas',  'emails', 'extensions', 'otbooks', 'admissions'));
     }
     public function guides()
     {

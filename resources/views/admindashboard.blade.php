@@ -7,7 +7,7 @@
                     <div class="card-header">
                         <h3 class="card-title">Intranet Sites</h3>
                     </div>
-                    <div class="card-body row justify-content-center"">
+                    <div class="card-body row justify-content-center">
                         @if ($intranetdatas)
                         @foreach ($intranetdatas as $intranetdata)
                         <div class="col-md-2 m-1">
@@ -17,7 +17,7 @@
                                 </button>
                             </a>
                         </div>
-                    @endforeach
+                        @endforeach
                         @endif
                     </div>
                 </div>
@@ -29,12 +29,12 @@
                     </div>
                     <div class="card-body row justify-content-center">
                         @if ($internetdatas)
-                            @foreach ($internetdatas as $internetdata)
-                                <div class="col-md-2 m-1"><a href="{{ $internetdata->url }}">
-                                        <button type="button"
-                                            class="btn btn-success text-truncate  btn-block">{{ $internetdata->name }}</button></a>
-                                </div>
-                            @endforeach
+                        @foreach ($internetdatas as $internetdata)
+                        <div class="col-md-2 m-1"><a href="{{ $internetdata->url }}">
+                                <button type="button"
+                                    class="btn btn-success text-truncate  btn-block">{{ $internetdata->name }}</button></a>
+                        </div>
+                        @endforeach
                         @endif
                     </div>
                 </div>
@@ -99,36 +99,36 @@
                             </thead>
                             <tbody>
                                 @foreach ($pcounts as $pcount)
-                                    <tr class="text-center align-middle">
-                                        <td>{{ $pcount->suor_branchname }}</td>
-                                        <td>{{ $pcount->newgen }}</td>
-                                        <td>{{ $pcount->newpedgen }}</td>
-                                        <td>{{ $pcount->newgeninsurance }}</td>
-                                        <td>{{ $pcount->newpedinsurance }}</td>
-                                        <td>{{ $pcount->followupgeneral }}</td>
-                                        <td>{{ $pcount->followuped }}</td>
-                                        <td>{{ $pcount->followupgeninsurance }}</td>
-                                        <td>{{ $pcount->followuppedinsurance }}</td>
-                                        <td>{{ $pcount->newemggen }}</td>
-                                        <td>{{ $pcount->newgen + $pcount->followupgeneral }}</td>
-                                        <td>{{ $pcount->newpedgen + $pcount->followuped }}</td>
-                                        <td>{{ $pcount->newgen + $pcount->newpedgen + $pcount->followupgeneral + $pcount->followuped }}
-                                        </td>
-                                        <td>{{ $pcount->newgeninsurance + $pcount->followupgeninsurance }}</td>
-                                        <td>{{ $pcount->newpedinsurance + $pcount->followuppedinsurance }}</td>
-                                        <td>{{ $pcount->newgeninsurance + $pcount->newpedinsurance + $pcount->followupgeninsurance + $pcount->followuppedinsurance }}
-                                        </td>
-                                        <td>{{ $pcount->newgen + $pcount->newgeninsurance + $pcount->followupgeneral + $pcount->followupgeninsurance }}
-                                        </td>
-                                        <td>{{ $pcount->newpedgen + $pcount->newpedinsurance + $pcount->followuped + $pcount->followuppedinsurance }}
-                                        </td>
-                                        <td>{{ $pcount->newemggen + $pcount->newpedgen + $pcount->newpedinsurance + $pcount->newgen + $pcount->newgeninsurance }}
-                                        </td>
-                                        <td>{{ $pcount->followuped + $pcount->followuppedinsurance + $pcount->followupgeneral + $pcount->followupgeninsurance }}
-                                        </td>
-                                        <td>{{ $pcount->newemggen + $pcount->newpedgen + $pcount->newpedinsurance + $pcount->followuped + $pcount->followuppedinsurance + $pcount->newgen + $pcount->newgeninsurance + $pcount->followupgeneral + $pcount->followupgeninsurance }}
-                                        </td>
-                                    </tr>
+                                <tr class="text-center align-middle">
+                                    <td>{{ $pcount->suor_branchname }}</td>
+                                    <td>{{ $pcount->newgen }}</td>
+                                    <td>{{ $pcount->newpedgen }}</td>
+                                    <td>{{ $pcount->newgeninsurance }}</td>
+                                    <td>{{ $pcount->newpedinsurance }}</td>
+                                    <td>{{ $pcount->followupgeneral }}</td>
+                                    <td>{{ $pcount->followuped }}</td>
+                                    <td>{{ $pcount->followupgeninsurance }}</td>
+                                    <td>{{ $pcount->followuppedinsurance }}</td>
+                                    <td>{{ $pcount->newemggen }}</td>
+                                    <td>{{ $pcount->newgen + $pcount->followupgeneral }}</td>
+                                    <td>{{ $pcount->newpedgen + $pcount->followuped }}</td>
+                                    <td>{{ $pcount->newgen + $pcount->newpedgen + $pcount->followupgeneral + $pcount->followuped }}
+                                    </td>
+                                    <td>{{ $pcount->newgeninsurance + $pcount->followupgeninsurance }}</td>
+                                    <td>{{ $pcount->newpedinsurance + $pcount->followuppedinsurance }}</td>
+                                    <td>{{ $pcount->newgeninsurance + $pcount->newpedinsurance + $pcount->followupgeninsurance + $pcount->followuppedinsurance }}
+                                    </td>
+                                    <td>{{ $pcount->newgen + $pcount->newgeninsurance + $pcount->followupgeneral + $pcount->followupgeninsurance }}
+                                    </td>
+                                    <td>{{ $pcount->newpedgen + $pcount->newpedinsurance + $pcount->followuped + $pcount->followuppedinsurance }}
+                                    </td>
+                                    <td>{{ $pcount->newemggen + $pcount->newpedgen + $pcount->newpedinsurance + $pcount->newgen + $pcount->newgeninsurance }}
+                                    </td>
+                                    <td>{{ $pcount->followuped + $pcount->followuppedinsurance + $pcount->followupgeneral + $pcount->followupgeninsurance }}
+                                    </td>
+                                    <td>{{ $pcount->newemggen + $pcount->newpedgen + $pcount->newpedinsurance + $pcount->followuped + $pcount->followuppedinsurance + $pcount->newgen + $pcount->newgeninsurance + $pcount->followupgeneral + $pcount->followupgeninsurance }}
+                                    </td>
+                                </tr>
                                 @endforeach
                             </tbody>
                         </table>
@@ -165,15 +165,15 @@
                                             </thead>
                                             <tbody>
                                                 @foreach ($otbooks as $otbook)
-                                                    <tr class="odd">
-                                                        <td>{{ $otbook->surgerytype }}</td>
-                                                        <td class="text-center align-middle">{{ $otbook->count }}</td>
-                                                    </tr>
+                                                <tr class="odd">
+                                                    <td>{{ $otbook->surgerytype }}</td>
+                                                    <td class="text-center align-middle">{{ $otbook->count }}</td>
+                                                </tr>
                                                 @endforeach
-                                                <tfoot class="bg-secondary">
-                                                    <td>Total</td>
-                                                    <td class="text-center align-middle">{{ $otcount->count}}</td>
-                                                </tfoot>
+                                            <tfoot class="bg-secondary">
+                                                <td>Total</td>
+                                                <td class="text-center align-middle">{{ $otcount->count}}</td>
+                                            </tfoot>
                                             </tbody>
 
                                         </table>
@@ -241,29 +241,31 @@
                                             </thead>
                                             <tbody>
                                                 @foreach ($admissions as $admission)
-                                                    <tr class="odd">
-                                                        <td>{{ $admission->dept }}</td>
-                                                        <td class="text-center align-middle">
-                                                            {{ $admission->insurance }}</td>
-                                                        <td class="text-center align-middle">{{ $admission->general }}
-                                                        </td>
-                                                        <td class="text-center align-middle">
-                                                            {{ $admission->hospital }}</td>
-                                                        <td class="text-center align-middle">{{ $admission->camp }}
-                                                        </td>
-                                                        <td class="text-center align-middle">{{ $admission->count }}
-                                                        </td>
-                                                    </tr>
+                                                <tr class="odd">
+                                                    <td>{{ $admission->dept }}</td>
+                                                    <td class="text-center align-middle">
+                                                        {{ $admission->insurance }}
+                                                    </td>
+                                                    <td class="text-center align-middle">{{ $admission->general }}
+                                                    </td>
+                                                    <td class="text-center align-middle">
+                                                        {{ $admission->hospital }}
+                                                    </td>
+                                                    <td class="text-center align-middle">{{ $admission->camp }}
+                                                    </td>
+                                                    <td class="text-center align-middle">{{ $admission->count }}
+                                                    </td>
+                                                </tr>
 
                                                 @endforeach
-                                                <tfoot class="bg-secondary">
-                                                    <td>Total</td>
-                                                    <td class="text-center align-middle">{{ $totalinsurance}}</td>
-                                                    <td class="text-center align-middle">{{ $totalgeneral}}</td>
-                                                    <td class="text-center align-middle">{{ $totalhospitaladmissions}}</td>
-                                                    <td class="text-center align-middle">{{ $totalcamp}}</td>
-                                                    <td class="text-center align-middle">{{ $totaladmissions}}</td>
-                                                </tfoot>
+                                            <tfoot class="bg-secondary">
+                                                <td>Total</td>
+                                                <td class="text-center align-middle">{{ $totalinsurance}}</td>
+                                                <td class="text-center align-middle">{{ $totalgeneral}}</td>
+                                                <td class="text-center align-middle">{{ $totalhospitaladmissions}}</td>
+                                                <td class="text-center align-middle">{{ $totalcamp}}</td>
+                                                <td class="text-center align-middle">{{ $totaladmissions}}</td>
+                                            </tfoot>
                                             </tbody>
                                         </table>
                                     </div>
@@ -302,10 +304,10 @@
                                 </thead>
                                 <tbody>
                                     @foreach ($docvisits as $docvisit)
-                                        <tr class="odd ">
-                                            <td>{{ $docvisit->docname }}</td>
-                                            <td>{{ $docvisit->patient_count }}</td>
-                                        </tr>
+                                    <tr class="odd ">
+                                        <td>{{ $docvisit->docname }}</td>
+                                        <td>{{ $docvisit->patient_count }}</td>
+                                    </tr>
                                     @endforeach
                                 </tbody>
                             </table>
@@ -347,11 +349,11 @@
                                             </thead>
                                             <tbody>
                                                 @foreach ($extensions as $extension)
-                                                    <tr class="odd">
-                                                        <td>{{ $extension->department }}</td>
-                                                        <td>{{ $extension->extension }}</td>
-                                                        <td>{{ $extension->description }}</td>
-                                                    </tr>
+                                                <tr class="odd">
+                                                    <td>{{ $extension->department }}</td>
+                                                    <td>{{ $extension->extension }}</td>
+                                                    <td>{{ $extension->description }}</td>
+                                                </tr>
                                                 @endforeach
                                             </tbody>
                                         </table>
@@ -404,11 +406,11 @@
                                             </thead>
                                             <tbody>
                                                 @foreach ($emails as $email)
-                                                    <tr class="odd">
-                                                        <td>{{ $email->department }}</td>
-                                                        <td>{{ $email->email }}</td>
-                                                        <td>{{ $email->location }}</td>
-                                                    </tr>
+                                                <tr class="odd">
+                                                    <td>{{ $email->department }}</td>
+                                                    <td>{{ $email->email }}</td>
+                                                    <td>{{ $email->location }}</td>
+                                                </tr>
                                                 @endforeach
                                             </tbody>
                                         </table>
