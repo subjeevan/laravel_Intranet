@@ -1,10 +1,9 @@
 <x-layout>
     <!-- Main content -->
     <section class="content">
-             <!-- Dashboard-->
+        <!-- Dashboard-->
         <div class="row">
             <div class="col-lg-12">
-
                 <div class="card shadow">
                     <div class="card-header bg-info text-center align-middle p-1">
                         <h4 class="font-weight-bold mb-0">Today's Registration Data</h4>
@@ -91,6 +90,90 @@
             </div>
 
             <!-- Table-->
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card shadow">
+                        <div class="card-header bg-info text-center align-middle p-1">
+                            <h4 class="font-weight-bold mb-0">Today's Medical Record Data</h4>
+                        </div>
+                        <div class="card-body p-2">
+                            <table class="table table-bordered table-sm">
+                                <thead>
+                                    <tr class="text-center align-middle">
+                                        <th>Branch Name</th>
+                                        <th>Medicine Prescribed</th>
+                                        <th>Glass Prescribed</th>
+                                        <th>Teleopthlmology Done</th>
+                                        <th>Cataract Referred</th>
+                                        <th>Other Referred</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if ($dreports2day)
+                                        @foreach ($dreports2day as $dreport)
+                                            <tr class="text-center align-middle">
+                                                <td>{{ $dreport->suor_branchname }}</td>
+                                                <td>{{ $dreport->medicine }}</td>
+                                                <td>{{ $dreport->glass }}</td>
+                                                <td>{{ $dreport->tele }}</td>
+                                                <td>{{ $dreport->catrefer }}</td>
+                                                <td>{{ $dreport->orefer }}</td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="card shadow">
+                        <div class="card-header bg-info text-center align-middle p-1">
+                            <h4 class="font-weight-bold mb-0">Yesterday's Medical Record Data</h4>
+                        </div>
+                        <div class="card-body p-2">
+                            <table class="table table-bordered table-sm">
+                                <thead>
+                                    <tr class="text-center align-middle">
+                                        <th>Branch Name</th>
+                                        <th>Medicine Prescribed</th>
+                                        <th>Glass Prescribed</th>
+                                        <th>Teleopthlmology Done</th>
+                                        <th>Cataract Referred</th>
+                                        <th>Other Referred</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if ($dreportsyday)
+                                        @foreach ($dreportsyday as $dreport)
+                                            <tr class="text-center align-middle">
+                                                <td>{{ $dreport->suor_branchname }}</td>
+                                                <td>{{ $dreport->medicine }}</td>
+                                                <td>{{ $dreport->glass }}</td>
+                                                <td>{{ $dreport->tele }}</td>
+                                                <td>{{ $dreport->catrefer }}</td>
+                                                <td>{{ $dreport->orefer }}</td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <form action="{{ route('dateconverter') }}" method="GET">
+            @csrf
+            <div class="form-group">
+                <label for="selected_date">Select Date:</label>
+                <input type="date" class="form-control" id="selected_date" name="selected_date">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
 
     </section>
     <!-- /.content -->

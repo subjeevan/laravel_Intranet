@@ -34,9 +34,10 @@
     <link rel="stylesheet" href="/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
     <link rel="stylesheet" href="/plugins/datatables-buttons/css/buttons.bootstrap4.min.css">
+    <link rel="stylesheet" href="/css/custom/jeevan.css">
 </head>
 
-<body class="hold-transition sidebar-mini layout-fixed layout-footer-fixed ">
+<body class="hold-transition sidebar-mini layout-fixed layout-footer-fixed sidebar-collapse">
     <div class="wrapper">
         <!-- Preloader -->
         {{-- <div class="preloader flex-column justify-content-center align-items-center">
@@ -55,7 +56,14 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-10">
-                            <div class="marquee text-red">
+
+                            <div class="marquee-container">
+                                <div class="marquee-content">
+                                    @foreach ($newses as $news)
+                                        <span class="marquee-item">{{ $news->type . ': ' . $news->message }}</span>
+                                    @endforeach
+
+                                </div>
                             </div>
                         </div><!-- /.col -->
                         <div class="col-sm-2">
@@ -133,8 +141,26 @@
         <script src="/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
         <script src="/plugins/datatables-buttons/js/buttons.print.min.js"></script>
         <script src="/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const marqueeContent = document.querySelector('.marquee-content');
+                const marqueeItems = document.querySelectorAll('.marquee-item');
 
+                if (marqueeContent && marqueeItems.length > 0) {
+                    let totalChars = 0;
+                    marqueeItems.forEach(item => {
+                        totalChars += item.textContent.length;
+                    });
 
+                    // Adjust duration based on character count (estimate)
+                    const baseDuration = 10; // Base duration
+                    const charsPerSecond = 8; // Adjust as needed
+                    const duration = baseDuration + (totalChars / charsPerSecond);
+
+                    marqueeContent.style.setProperty('--marquee-duration', `${duration}s`);
+                }
+            });
+        </script>
 </body>
 
 </html>

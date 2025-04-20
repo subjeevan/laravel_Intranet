@@ -5,6 +5,9 @@
                 <h4 class="card-title">BEH Calander</h4>
             </div>
             <div class="card-body">
+                <div >
+                    <img src="{{asset('storage/'."files/images/hospital_banner.jpg") }}" class="img-fluid" alt="hospital">
+                </div>
                 <div class="row">
                     @foreach ($months as $month)
                     <div class="col-sm-4">

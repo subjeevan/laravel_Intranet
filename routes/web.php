@@ -39,6 +39,8 @@ Route::get('phpinfo', function () {
 Route::get('oracle', [HospitalController::class, 'index'])->name('oracle');
 
 Route::get('/dummydata',[DummyController::class,'index'])->name('dummydata');
+Route::get('dateconverter',[DummyController::class,'dateconverter'])->name('dateconverter');
 Route::get('/calander',[CalanderController::class,'index'])->name('calander');
+Route::get('report',[DummyController::class,'report']);
 
 require __DIR__ . '/auth.php';

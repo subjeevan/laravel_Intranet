@@ -47,7 +47,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('guides') }}" class="nav-link {{ Route::is('guides') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-hands-helping"></i>
+                        <i class="nav-icon fas fa-solid fa-book"></i>
                         <p>
                             Download & Guides
                         </p>
@@ -64,7 +64,7 @@
                 </li>
                 <li class="nav-item">
                     <a href="{{ route('dummydata') }}" class="nav-link {{ Route::is('dummydata') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-calendar"></i>
+                        <i class="nav-icon fas fa-solid fa-tag"></i>
                         <p>
                             Dummy
                         </p>
