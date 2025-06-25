@@ -38,6 +38,8 @@
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed layout-footer-fixed sidebar-collapse">
+    @include('sweetalert::alert')
+
     <div class="wrapper">
         <!-- Preloader -->
         {{-- <div class="preloader flex-column justify-content-center align-items-center">

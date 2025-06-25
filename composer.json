@@ -13,6 +13,7 @@
         "laravel/socialite": "^5.18",
         "laravel/tinker": "^2.9",
         "pratiksh/nepalidate": "^1.4",
+        "realrashid/sweet-alert": "^7.3",
         "twilio/sdk": "*",
         "yajra/laravel-oci8": "^11.6"
     },

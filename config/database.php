@@ -72,6 +72,17 @@ return [
             'prefix'        => '',
             'strict'        => false,
         ],
+        'pis' => [
+            'driver'        => 'oracle',
+            'host'          => env('ORCL_HOST', '127.0.0.1'),
+            'port'          => env('ORCL_PORT', '1521'),
+            'database'      => env('DB_SERVICE_NAME', 'hospital'), // Oracle Database Name
+            'username'      => env('DB_PIS_USER', 'PIS_USER'),
+            'password'      => env('DB_PIS_PASS', 'PIS_password'),
+            'charset'       => 'AL32UTF8',
+            'prefix'        => '',
+            'strict'        => false,
+        ],
         'dh' => [
             'driver'        => 'oracle',
             'host'          => env('ORCL_DHOST', '127.0.0.1'),
@@ -86,6 +97,28 @@ return [
         'p' => [
             'driver'        => 'oracle',
             'host'          => env('ORCL_HOST', '127.0.0.1'),
+            'port'          => env('ORCL_PORT', '1521'),
+            'database'      => env('DB_SERVICE_NAME', 'DUMMY'), // Oracle Database Name
+            'username'      => env('DB_PHARMACY_USER', 'PHARMACY_USER'),
+            'password'      => env('DB_PHARMACY_PASS', 'pharmacy_password'),
+            'charset'       => 'AL32UTF8',
+            'prefix'        => '',
+            'strict'        => false,
+        ],
+        'do' => [
+            'driver'        => 'oracle',
+            'host'          => env('ORCL_DHOST', '127.0.0.1'),
+            'port'          => env('ORCL_PORT', '1521'),
+            'database'      => env('DB_SERVICE_NAME', 'DUMMY'), // Oracle Database Name
+            'username'      => env('DB_OPTICAL_USER', ''),
+            'password'      => env('DB_OPTICAL_PASS', ''),
+            'charset'       => 'AL32UTF8',
+            'prefix'        => '',
+            'strict'        => false,
+        ],
+        'dp' => [
+            'driver'        => 'oracle',
+            'host'          => env('ORCL_DHOST', '127.0.0.1'),
             'port'          => env('ORCL_PORT', '1521'),
             'database'      => env('DB_SERVICE_NAME', 'DUMMY'), // Oracle Database Name
             'username'      => env('DB_PHARMACY_USER', 'PHARMACY_USER'),
@@ -178,7 +211,7 @@ return [
 
         'options' => [
             'cluster' => env('REDIS_CLUSTER', 'redis'),
-            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_') . '_database_'),
         ],
 
         'default' => [

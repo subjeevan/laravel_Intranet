@@ -127,6 +127,62 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-lg-3">
+                    <div class="card shadow">
+                        <div class="card-header bg-info text-center align-middle p-1">
+                            <h4 class="font-weight-bold mb-0">Today's Optical Sales Data</h4>
+                        </div>
+                        <div class="card-body p-2">
+                            <table class="table table-bordered table-sm">
+                                <thead>
+                                    <tr class="text-center align-middle">
+                                        <th>Branch Name</th>
+                                        <th>Patient Count</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if ($opticalsales)
+                                        @foreach ($opticalsales as $opticalsale)
+                                            <tr class="text-center align-middle">
+                                                <td>{{ $opticalsale->departmentname }}</td>
+                                                <td>{{ $opticalsale->bill_count  }}</td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="card shadow">
+                        <div class="card-header bg-info text-center align-middle p-1">
+                            <h4 class="font-weight-bold mb-0">Today's Pharmacy Sales Data</h4>
+                        </div>
+                        <div class="card-body p-2">
+                            <table class="table table-bordered table-sm">
+                                <thead>
+                                    <tr class="text-center align-middle">
+                                        <th>Branch Name</th>
+                                        <th>Medicine Sold</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if ($pharsales)
+                                        @foreach ($pharsales as $pharsale)
+                                            <tr class="text-center align-middle">
+                                                <td>{{ $pharsale->departmentname }}</td>
+                                                <td>{{ $pharsale->bill_count}}</td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-lg-6">
                     <div class="card shadow">
                         <div class="card-header bg-info text-center align-middle p-1">
